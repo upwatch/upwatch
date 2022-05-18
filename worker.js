@@ -34,7 +34,6 @@ async function createData(apiKey) {
       metaDataUri + metaDataQueryParams,
       apiKey
     );
-
     // await Market.destroy({ truncate: true }); // clears instances in model
     await db.sync({ force: true }); // clears db and matches models to tables
 
