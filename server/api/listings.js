@@ -12,4 +12,13 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/:cmc_id', async (req, res, next) => {
+  try {
+    const listing = await Listing.findByPk(req.params.cmc_id);
+    res.json(listing);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
