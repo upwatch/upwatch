@@ -5,6 +5,7 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import { me } from './store';
 import AllListings from './components/AllListings';
+import Listing from './components/Listing';
 
 /**
  * COMPONENT
@@ -32,7 +33,8 @@ const Routes = () => {
           </Route>
           <Route path='/login'>{Login}</Route>
           <Route path='/signup'>{Signup}</Route>
-          <Route path='/listings' component={AllListings} />
+          <Route exact path='/listings' component={AllListings} />
+          <Route path='/listings/:cmc_id' component={Listing} />
         </Switch>
       )}
     </div>
