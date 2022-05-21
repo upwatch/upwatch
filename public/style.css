@@ -26,6 +26,16 @@ form div {
   width: 1.5rem;
 }
 
+.listing-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+/* .listing-top {
+  grid-column: 1 / 4;
+  text-align: center;
+} */
+
 .all-listings-table {
   border-collapse: collapse;
   margin: 25px 0;
@@ -51,10 +61,6 @@ form div {
   border-bottom: 1px solid #dddddd;
 }
 
-/* .all-listings-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-} */
-
 .all-listings-table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
 }
@@ -65,3 +71,7 @@ form div {
   background-color: #f3f3f3;
   cursor: pointer;
 }
+
+/* .all-listings-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+} */

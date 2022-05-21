@@ -55,7 +55,6 @@ const AllListings = () => {
                   <td>{formatBigFloat(listing.volume_24h)}</td>
                   <td>{formatBigFloat(listing.circulating_supply)}</td>
                 </tr>
-                // </Link>
               );
             })}
           </tbody>
