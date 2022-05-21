@@ -5,11 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import auth from './auth';
 import listingsReducer from './listings';
 import listingReducer from './listing';
+import historicalReducer from './historicalData';
 
 const reducer = combineReducers({
   auth,
   listings: listingsReducer,
   listing: listingReducer,
+  historicalData: historicalReducer,
 });
 
 const middleware = composeWithDevTools(
