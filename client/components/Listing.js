@@ -40,14 +40,6 @@ const d = [
 const chartDays = 1;
 
 const Listing = () => {
-  // const ok = d
-  //   .filter((e, i) => i <= chartDays)
-  //   .reduce((a, b) => (a.close <= b.close ? a : b), {});
-
-  // console.log('ok', ok);
-
-  const test = d.filter((e, i) => i <= chartDays);
-  console.log('test', test);
   const { listing } = useSelector((state) => state);
 
   const { cmc_id } = useParams();
@@ -57,8 +49,10 @@ const Listing = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchHistoricalData());
-  }, []);
+    if (listing.symbol) {
+      dispatch(fetchHistoricalData(`${listing.symbol}-usd`));
+    }
+  }, [listing]);
 
   return (
     <div className='listing-container'>
@@ -156,7 +150,7 @@ const Listing = () => {
         </table>
       </div>
 
-      <LineChart />
+      <LineChart symbol={listing.symbol} />
     </div>
   );
 };
