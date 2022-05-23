@@ -12,8 +12,31 @@ import { formatAsDollars, formatDate } from '../utility';
 const LineChart = () => {
   const { historicalData } = useSelector((state) => state);
 
+  const [chartDays, setChartDays] = useState(7);
+  const [isSelected, setIsSelected] = useState('7 D');
+
+  function handleClick(name) {
+    setIsSelected(name);
+    const numberDays = parseInt(name.split('').slice(0, -2).join(''));
+    setChartDays(numberDays);
+  }
+
+  const buttons = ['7 D', '30 D', '60 D', '180 D'];
+
   return (
     <div>
+      {buttons.map((name, i) => {
+        return (
+          <button
+            key={i}
+            name={name}
+            className={isSelected === name ? 'selected' : ''}
+            onClick={() => handleClick(name)}
+          >
+            {name}
+          </button>
+        );
+      })}
       <VictoryChart
         width={750}
         height={500}
@@ -46,7 +69,7 @@ const LineChart = () => {
             data: { stroke: '#c43a31' },
             parent: { border: '1px solid #ccc' },
           }}
-          data={historicalData.filter((data, i) => i <= 60)}
+          data={historicalData.filter((data, i) => i <= chartDays)}
           x='date'
           y='close'
         />
