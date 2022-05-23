@@ -10,12 +10,13 @@ const setHistoricalData = (data) => {
   };
 };
 
-export const fetchHistoricalData = () => {
+export const fetchHistoricalData = (symbolPair) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(
-        `https://api.pro.coinbase.com/products/btc-usd/candles?granularity=86400`
+        `https://api.pro.coinbase.com/products/${symbolPair}/candles?granularity=86400`
       );
+
       dispatch(setHistoricalData(formatHistoricalData(data)));
     } catch (error) {
       console.log(error);
