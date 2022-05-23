@@ -75,3 +75,11 @@ form div {
 /* .all-listings-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 } */
+
+/* .button {
+  background-color: red;
+} */
+
+.selected {
+  background-color: rgb(142, 145, 158);
+}
