@@ -10,10 +10,9 @@ const Pagination = ({ listings, listingsPerPage, setCurrentPage }) => {
     for (let i = 1; i < Math.ceil(listings.length / listingsPerPage); i++) {
       pageNumberArray.push(i);
     }
-    console.log('arr', pageNumberArray);
     setPageNumbers(pageNumberArray);
   }, [listings, listingsPerPage]);
-  console.log('from', listingsPerPage);
+
   return (
     <div>
       {pageNumbers.map((number) => {

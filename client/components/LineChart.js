@@ -23,82 +23,86 @@ const LineChart = () => {
 
   const buttons = ['7 D', '30 D', '60 D', '180 D'];
 
-  return (
-    <div>
-      {buttons.map((name, i) => {
-        return (
-          <button
-            key={i}
-            name={name}
-            className={isSelected === name ? 'selected' : ''}
-            onClick={() => handleClick(name)}
-          >
-            {name}
-          </button>
-        );
-      })}
-      <VictoryChart
-        width={750}
-        height={500}
-        scale={{ x: 'time' }}
-        //padding={{ top: 5, bottom: 50, left: 50, right: 50 }}
-        containerComponent={
-          <VictoryVoronoiContainer
-            responsive={false}
-            labels={({ datum }) =>
-              `${formatDate(datum.date)} ${formatAsDollars(datum.close)}`
-            }
-            labelComponent={
-              <VictoryTooltip
-                dy={-7}
-                constrainToVisibleArea
-                flyoutStyle={{
-                  fill: 'gray',
-                }}
-                style={{
-                  fill: 'white',
-                  fontSize: 18,
-                }}
-              />
-            }
+  if (!historicalData.length) {
+    return <p>Loading Chart data</p>;
+  } else {
+    return (
+      <div>
+        {buttons.map((name, i) => {
+          return (
+            <button
+              key={i}
+              name={name}
+              className={isSelected === name ? 'selected' : ''}
+              onClick={() => handleClick(name)}
+            >
+              {name}
+            </button>
+          );
+        })}
+        <VictoryChart
+          width={750}
+          height={500}
+          scale={{ x: 'time' }}
+          //padding={{ top: 5, bottom: 50, left: 50, right: 50 }}
+          containerComponent={
+            <VictoryVoronoiContainer
+              responsive={false}
+              labels={({ datum }) =>
+                `${formatDate(datum.date)} ${formatAsDollars(datum.close)}`
+              }
+              labelComponent={
+                <VictoryTooltip
+                  dy={-7}
+                  constrainToVisibleArea
+                  flyoutStyle={{
+                    fill: 'gray',
+                  }}
+                  style={{
+                    fill: 'white',
+                    fontSize: 18,
+                  }}
+                />
+              }
+            />
+          }
+        >
+          <VictoryLine
+            style={{
+              data: { stroke: '#c43a31' },
+              parent: { border: '1px solid #ccc' },
+            }}
+            data={historicalData.filter((data, idx) => idx <= chartDays)}
+            x='date'
+            y='close'
           />
-        }
-      >
-        <VictoryLine
-          style={{
-            data: { stroke: '#c43a31' },
-            parent: { border: '1px solid #ccc' },
-          }}
-          data={historicalData.filter((data, idx) => idx <= chartDays)}
-          x='date'
-          y='close'
-        />
-        <VictoryAxis
-          crossAxis
-          style={{
-            tickLabels: {
-              fill: 'black',
-              fontSize: 16,
-            },
-            axis: {
-              stroke: 'black',
-            },
-          }}
-        />
-        <VictoryAxis
-          dependentAxis
-          style={{
-            tickLabels: {
-              fill: 'black',
-            },
-            axis: {
-              stroke: 'black',
-            },
-          }}
-        />
-      </VictoryChart>
-    </div>
-  );
+          <VictoryAxis
+            crossAxis
+            style={{
+              tickLabels: {
+                fill: 'black',
+                fontSize: 16,
+              },
+              axis: {
+                stroke: 'black',
+              },
+            }}
+          />
+          <VictoryAxis
+            dependentAxis
+            style={{
+              tickLabels: {
+                fill: 'black',
+              },
+              axis: {
+                stroke: 'black',
+              },
+            }}
+          />
+        </VictoryChart>
+      </div>
+    );
+  }
 };
 
 export default LineChart;

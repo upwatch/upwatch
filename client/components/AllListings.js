@@ -7,6 +7,8 @@ import Pagination from './Pagination';
 import Filters from './Filters';
 
 const AllListings = () => {
+  const [nameSearch, setNameSearch] = useState('');
+
   const dispatch = useDispatch();
   const history = useHistory();
   const { listings } = useSelector((state) => state);
@@ -37,7 +39,8 @@ const AllListings = () => {
       <div>
         <Filters
           setListingsPerPage={setListingsPerPage}
-          listingsPerPage={listingsPerPage}
+          setNameSearch={setNameSearch}
+          setCurrentPage={setCurrentPage}
         />
         <Pagination
           listings={listings}
@@ -61,6 +64,12 @@ const AllListings = () => {
           <tbody>
             {[...listings]
               .sort((a, b) => a.cmc_rank - b.cmc_rank)
+              .filter((listing) => {
+                if (nameSearch.length > 0) {
+                  return listing.name.toLowerCase().includes(nameSearch);
+                }
+                return listing;
+              })
               .map((listing) => {
                 if (
                   listing.cmc_rank >= indexOfFirstListing &&
