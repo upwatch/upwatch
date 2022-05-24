@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { fetchListings } from '../store/listings';
 import { formatAsDollars, formatAsPercent, formatBigFloat } from '../utility';
+import Pagination from './Pagination';
+import Filters from './Filters';
 
 const AllListings = () => {
-  //const [loading, setLoading] = useState(false);
-
   const dispatch = useDispatch();
   const history = useHistory();
   const { listings } = useSelector((state) => state);
@@ -15,11 +15,35 @@ const AllListings = () => {
     dispatch(fetchListings());
   }, []);
 
+  //pagination
+  const [listingsPerPage, setListingsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [indexOfFirstListing, setIndexOfFirstListing] = useState(1);
+  const [indexOfLastListing, setIndexOfLastListing] = useState(
+    Number.MAX_SAFE_INTEGER
+  );
+
+  useEffect(() => {
+    setIndexOfFirstListing(
+      currentPage * listingsPerPage - (listingsPerPage - 1)
+    );
+    setIndexOfLastListing(currentPage * listingsPerPage);
+  }, [currentPage, listingsPerPage]);
+  console.log(listingsPerPage);
   if (!listings.length) {
     return <p>Loading...</p>;
   } else {
     return (
       <div>
+        <Filters
+          setListingsPerPage={setListingsPerPage}
+          listingsPerPage={listingsPerPage}
+        />
+        <Pagination
+          listings={listings}
+          listingsPerPage={listingsPerPage}
+          setCurrentPage={setCurrentPage}
+        />
         <table className='all-listings-table'>
           <thead>
             <tr>
@@ -35,28 +59,36 @@ const AllListings = () => {
             </tr>
           </thead>
           <tbody>
-            {listings.map((listing) => {
-              return (
-                <tr
-                  key={listing.cmc_rank}
-                  onClick={() => history.push(`/listings/${listing.cmc_id}`)}
-                >
-                  <td>{listing.cmc_rank}</td>
-                  <td>
-                    <img className='logo' src={listing.logoUrl} />
-                  </td>
-                  <td>
-                    <strong>{listing.name}</strong>
-                  </td>
-                  <td>{formatAsDollars(listing.price)}</td>
-                  <td>{formatAsPercent(listing.percent_change_1h)}</td>
-                  <td>{formatAsPercent(listing.percent_change_24h)}</td>
-                  <td>{formatAsDollars(listing.market_cap)}</td>
-                  <td>{formatBigFloat(listing.volume_24h)}</td>
-                  <td>{formatBigFloat(listing.circulating_supply)}</td>
-                </tr>
-              );
-            })}
+            {[...listings]
+              .sort((a, b) => a.cmc_rank - b.cmc_rank)
+              .map((listing) => {
+                if (
+                  listing.cmc_rank >= indexOfFirstListing &&
+                  listing.cmc_rank <= indexOfLastListing
+                )
+                  return (
+                    <tr
+                      key={listing.cmc_rank}
+                      onClick={() =>
+                        history.push(`/listings/${listing.cmc_id}`)
+                      }
+                    >
+                      <td>{listing.cmc_rank}</td>
+                      <td>
+                        <img className='logo' src={listing.logoUrl} />
+                      </td>
+                      <td>
+                        <strong>{listing.name}</strong>
+                      </td>
+                      <td>{formatAsDollars(listing.price)}</td>
+                      <td>{formatAsPercent(listing.percent_change_1h)}</td>
+                      <td>{formatAsPercent(listing.percent_change_24h)}</td>
+                      <td>{formatAsDollars(listing.market_cap)}</td>
+                      <td>{formatBigFloat(listing.volume_24h)}</td>
+                      <td>{formatBigFloat(listing.circulating_supply)}</td>
+                    </tr>
+                  );
+              })}
           </tbody>
         </table>
       </div>

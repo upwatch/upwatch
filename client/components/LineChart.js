@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   VictoryChart,
   VictoryLine,
@@ -69,7 +69,7 @@ const LineChart = () => {
             data: { stroke: '#c43a31' },
             parent: { border: '1px solid #ccc' },
           }}
-          data={historicalData.filter((data, i) => i <= chartDays)}
+          data={historicalData.filter((data, idx) => idx <= chartDays)}
           x='date'
           y='close'
         />
