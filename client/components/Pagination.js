@@ -14,12 +14,12 @@ const Pagination = ({ listings, listingsPerPage, setCurrentPage }) => {
   }, [listings, listingsPerPage]);
 
   return (
-    <div>
+    <div className='paginationContainer'>
       {pageNumbers.map((number) => {
         return (
           <p
             key={number}
-            className='page-numbers'
+            className='paginationNumbers'
             onClick={() => setCurrentPage(number)}
           >
             {number}

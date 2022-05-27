@@ -9,7 +9,7 @@ import {
 } from 'victory';
 import { formatAsDollars, formatDate } from '../utility';
 
-const LineChart = () => {
+const LineChart = ({ description }) => {
   const { historicalData } = useSelector((state) => state);
 
   const [chartDays, setChartDays] = useState(7);
@@ -24,82 +24,92 @@ const LineChart = () => {
   const buttons = ['7 D', '30 D', '60 D', '180 D'];
 
   if (!historicalData.length) {
-    return <p>Loading Chart data</p>;
+    return <p>Chart Data Not Available</p>;
   } else {
     return (
-      <div>
-        {buttons.map((name, i) => {
-          return (
-            <button
-              key={i}
-              name={name}
-              className={isSelected === name ? 'selected' : ''}
-              onClick={() => handleClick(name)}
-            >
-              {name}
-            </button>
-          );
-        })}
-        <VictoryChart
-          width={750}
-          height={500}
-          scale={{ x: 'time' }}
-          //padding={{ top: 5, bottom: 50, left: 50, right: 50 }}
-          containerComponent={
-            <VictoryVoronoiContainer
-              responsive={false}
-              labels={({ datum }) =>
-                `${formatDate(datum.date)} ${formatAsDollars(datum.close)}`
-              }
-              labelComponent={
-                <VictoryTooltip
-                  dy={-7}
-                  constrainToVisibleArea
-                  flyoutStyle={{
-                    fill: 'gray',
-                  }}
-                  style={{
-                    fill: 'white',
-                    fontSize: 18,
-                  }}
+      <div className='listingRightContainer'>
+        <div className='listingChart'>
+          <div className='listingButtons'>
+            {buttons.map((name, i) => {
+              return (
+                <button
+                  key={i}
+                  name={name}
+                  className={isSelected === name ? 'selectedButton' : ''}
+                  onClick={() => handleClick(name)}
+                >
+                  {name}
+                </button>
+              );
+            })}
+          </div>
+          <div className='chart'>
+            <VictoryChart
+              width={850}
+              height={500}
+              scale={{ x: 'time' }}
+              //padding={{ top: 5, bottom: 50, left: 50, right: 50 }}
+              containerComponent={
+                <VictoryVoronoiContainer
+                  responsive={false}
+                  labels={({ datum }) =>
+                    `${formatDate(datum.date)} ${formatAsDollars(datum.close)}`
+                  }
+                  labelComponent={
+                    <VictoryTooltip
+                      dy={-7}
+                      constrainToVisibleArea
+                      flyoutStyle={{
+                        fill: 'gray',
+                      }}
+                      style={{
+                        fill: 'white',
+                        fontSize: 18,
+                      }}
+                    />
+                  }
                 />
               }
-            />
-          }
-        >
-          <VictoryLine
-            style={{
-              data: { stroke: '#c43a31' },
-              parent: { border: '1px solid #ccc' },
-            }}
-            data={historicalData.filter((data, idx) => idx <= chartDays)}
-            x='date'
-            y='close'
-          />
-          <VictoryAxis
-            crossAxis
-            style={{
-              tickLabels: {
-                fill: 'black',
-                fontSize: 16,
-              },
-              axis: {
-                stroke: 'black',
-              },
-            }}
-          />
-          <VictoryAxis
-            dependentAxis
-            style={{
-              tickLabels: {
-                fill: 'black',
-              },
-              axis: {
-                stroke: 'black',
-              },
-            }}
-          />
-        </VictoryChart>
+            >
+              <VictoryLine
+                style={{
+                  data: { stroke: '#c43a31' },
+                  parent: { border: '1px solid #ccc' },
+                }}
+                data={historicalData.filter((data, idx) => idx <= chartDays)}
+                x='date'
+                y='close'
+              />
+              <VictoryAxis
+                crossAxis
+                style={{
+                  tickLabels: {
+                    fill: 'black',
+                    fontSize: 16,
+                  },
+                  axis: {
+                    stroke: 'black',
+                  },
+                }}
+              />
+              <VictoryAxis
+                dependentAxis
+                style={{
+                  tickLabels: {
+                    fill: 'black',
+                  },
+                  axis: {
+                    stroke: 'black',
+                  },
+                }}
+              />
+            </VictoryChart>
+          </div>
+          <div className='description'>
+            <h4>Descrition: </h4>
+            <p>{description}</p>
+          </div>
+        </div>
       </div>
     );
   }
