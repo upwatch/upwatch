@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className='metrics'>
+      <div className='navMetrics'>
         <p>
           <small>Crypto Market Cap: </small>
           {formatAsDollars(metrics.total_market_cap)}
@@ -39,7 +39,7 @@ const Navbar = () => {
           {formatDate(metrics.updatedAt)}
         </p>
       </div>
-      <div className='logoContainer'>
+      <div className='navTitle'>
         <Link to='/listings' style={{ textDecoration: 'none' }}>
           <h1>UPWATCH</h1>
         </Link>

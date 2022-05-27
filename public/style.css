@@ -1,32 +1,14 @@
+:root {
+  --theme-green-color: #379683;
+  --theme-beige-color: #edf5e1;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
 }
 
-/* a {
-  text-decoration: none;
-} */
-
-/* label {
-  display: block;
-} */
-
-/* nav a {
-  margin: 1em;
-} */
-
-/* form div {
-  margin: 1em;
-  display: inline-block;
-} */
-
-.logo {
-  object-fit: contain;
-  height: 3rem;
-  width: 3rem;
-}
-
-.metrics {
+.navMetrics {
   display: flex;
   justify-content: space-around;
   font-size: 0.9rem;
@@ -38,16 +20,16 @@ body {
   color: black;
 }
 
-.logoContainer {
+.navTitle {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #009879;
-  padding: 0.5rem;
+  background-color: var(--theme-green-color);
+  padding: 0.2rem;
 }
-
-.logoContainer h1 {
-  color: white;
+/* #2271b1; */
+.navTitle h1 {
+  color: var(--theme-beige-color);
 }
 
 /* nav {
@@ -63,7 +45,7 @@ body {
   margin: 1.5rem;
 }
 
-.filters-container {
+.filtersContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,7 +78,7 @@ input {
 }
 
 .paginationNumbers:hover {
-  color: #009879;
+  color: var(--theme-green-color);
 }
 
 .allListingsTableContainer {
@@ -115,11 +97,11 @@ input {
 }
 
 .allListingsTable thead tr {
-  background-color: #009879;
-  color: #ffffff;
+  background-color: var(--theme-green-color);
+  color: var(--theme-beige-color);
   text-align: left;
 }
-
+/* #009879 */
 .allListingsTable th,
 td {
   padding: 12px 15px;
@@ -131,14 +113,20 @@ td {
 }
 
 .allListingsTable tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid var(--theme-green-color);
 }
 
 .allListingsTable tbody tr:hover {
   font-weight: bold;
-  color: #009879;
+  color: var(--theme-green-color);
   background-color: #f3f3f3;
   cursor: pointer;
+}
+
+.symbolLogo {
+  object-fit: contain;
+  height: 3rem;
+  width: 3rem;
 }
 
 /* .all-listings-table tbody tr:nth-of-type(even) {
@@ -186,7 +174,6 @@ td {
   margin: 1rem 5rem 0 0;
   width: 900px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  /* background-color: green; */
 }
 
 .listingButtons {
@@ -213,4 +200,14 @@ td {
 
 .description p {
   text-indent: 50px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer p {
+  font-size: 0.8rem;
 }

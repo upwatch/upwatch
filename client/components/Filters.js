@@ -21,7 +21,7 @@ const Filters = ({
   };
 
   return (
-    <div className='filters-container'>
+    <div className='filtersContainer'>
       <div className='filters'>
         <input
           autoComplete='off'
