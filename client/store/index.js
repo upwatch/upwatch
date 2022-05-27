@@ -6,12 +6,14 @@ import auth from './auth';
 import listingsReducer from './listings';
 import listingReducer from './listing';
 import historicalReducer from './historicalData';
+import metricsReducer from './metrics';
 
 const reducer = combineReducers({
   auth,
   listings: listingsReducer,
   listing: listingReducer,
   historicalData: historicalReducer,
+  metrics: metricsReducer,
 });
 
 const middleware = composeWithDevTools(

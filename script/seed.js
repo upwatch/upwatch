@@ -13,7 +13,6 @@ const createData = require('../worker');
  */
 async function seed() {
   try {
-    console.log('key', process.env.CMCAPIKEY);
     if (process.env.CMCAPIKEY) {
       await createData(process.env.CMCAPIKEY);
     } else {
