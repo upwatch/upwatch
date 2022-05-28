@@ -1,7 +1,7 @@
 const axios = require('axios');
 const {
   db,
-  models: { Listing, Metrics, User },
+  models: { Listing, Metrics },
 } = require('./server/db');
 
 async function getData(uri, apiKey) {
@@ -77,8 +77,6 @@ async function createData(apiKey) {
         total_market_cap_yesterday_percentage_change:
           metricsData.quote.USD.total_market_cap_yesterday_percentage_change,
       }),
-
-      await User.create({ username: 'cody', password: '123' }),
     ]);
   } catch (error) {
     console.log(error);
