@@ -25,7 +25,7 @@ const Listing = () => {
     <div className='listingContainer'>
       <div className='listingLeftContainer'>
         <div>
-          <table className='allListingsTable'>
+          <table className='listingTables'>
             <thead>
               <tr>
                 <th>{listing.name}</th>
@@ -51,7 +51,7 @@ const Listing = () => {
           </table>
         </div>
         <div>
-          <table className='allListingsTable'>
+          <table className='listingTables'>
             <thead>
               <tr>
                 <th colSpan='2'>Price Performance</th>
@@ -86,7 +86,7 @@ const Listing = () => {
           </table>
         </div>
         <div>
-          <table className='allListingsTable'>
+          <table className='listingTables'>
             <thead>
               <tr>
                 <th colSpan='2'>Market And Volume Stats</th>

@@ -101,7 +101,7 @@ input {
   color: var(--theme-beige-color);
   text-align: left;
 }
-/* #009879 */
+
 .allListingsTable th,
 td {
   padding: 12px 15px;
@@ -200,6 +200,35 @@ td {
 
 .description p {
   text-indent: 50px;
+}
+
+.listingTables {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  font-family: sans-serif;
+  min-width: 350px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.listingTables thead tr {
+  background-color: var(--theme-green-color);
+  color: var(--theme-beige-color);
+  text-align: left;
+}
+
+.listingTables th,
+td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.listingTables tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.listingTables tbody tr:last-of-type {
+  border-bottom: 2px solid var(--theme-green-color);
 }
 
 .footer {
