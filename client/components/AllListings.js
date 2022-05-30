@@ -87,7 +87,7 @@ const AllListings = () => {
                       >
                         <td>{listing.cmc_rank}</td>
                         <td>
-                          <img className='symbolLogo' src={listing.logoUrl} />
+                          <img src={listing.logoUrl} />
                         </td>
                         <td>
                           <strong>{listing.name}</strong>
