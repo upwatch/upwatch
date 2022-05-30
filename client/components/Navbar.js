@@ -40,7 +40,12 @@ const Navbar = () => {
         </p>
       </div>
       <div className='navTitle'>
-        <Link to='/listings' style={{ textDecoration: 'none' }}>
+        <Link
+          to='/listings'
+          className='navLogoLink'
+          style={{ textDecoration: 'none' }}
+        >
+          <span className='material-symbols-outlined'>arrow_circle_up</span>
           <h1>UPWATCH</h1>
         </Link>
       </div>

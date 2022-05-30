@@ -31,8 +31,31 @@ body {
   padding: 0.2rem;
 }
 
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 200, 'opsz' 48;
+  color: var(--theme-beige-color);
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.navLogoLink {
+  display: flex;
+  flex-direction: row;
+}
+
+.navLogoLink span,
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.7rem;
+}
+
 .navTitle h1 {
   color: var(--theme-beige-color);
+  font-weight: normal;
+  margin: 0rem;
+  padding: 0rem;
 }
 
 .allListingsContainer {
@@ -118,7 +141,7 @@ td {
   cursor: pointer;
 }
 
-.symbolLogo {
+.allListingsTable img {
   object-fit: contain;
   height: 3rem;
   width: 3rem;
@@ -202,6 +225,12 @@ td {
 td {
   padding: 12px 15px;
   text-align: center;
+}
+
+.listingTables img {
+  object-fit: contain;
+  height: 4rem;
+  width: 4rem;
 }
 
 .listingTables tbody tr {
