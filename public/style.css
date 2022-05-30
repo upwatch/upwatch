@@ -1,22 +1,25 @@
 :root {
   --theme-green-color: #379683;
   --theme-beige-color: #edf5e1;
+  --background-color: #f8f8f8;
 }
 
 body {
   font-family: sans-serif;
   margin: 0;
+  background-color: var(--background-color);
 }
 
 .navMetrics {
   display: flex;
   justify-content: space-around;
   font-size: 0.9rem;
-  background-color: white;
+  background-color: var(--background-color);
 }
 
-.metrics p {
-  margin: 0.5rem 0rem;
+.navMetrics p {
+  margin: 0rem;
+  padding: 0.5rem;
   color: black;
 }
 
@@ -27,19 +30,10 @@ body {
   background-color: var(--theme-green-color);
   padding: 0.2rem;
 }
-/* #2271b1; */
+
 .navTitle h1 {
   color: var(--theme-beige-color);
 }
-
-/* nav {
-  border-bottom: 2px black solid;
-} */
-
-/* .listing-top {
-  grid-column: 1 / 4;
-  text-align: center;
-} */
 
 .allListingsContainer {
   margin: 1.5rem;
@@ -109,6 +103,7 @@ td {
 }
 
 .allListingsTable tbody tr {
+  background-color: white;
   border-bottom: 1px solid #dddddd;
 }
 
@@ -129,26 +124,11 @@ td {
   width: 3rem;
 }
 
-/* .all-listings-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-} */
-
-/* .button {
-  background-color: red;
-} */
-
 .listingContainer {
   display: grid;
   grid-template-columns: 30% 1fr;
   margin: 1rem;
 }
-
-/* @media (max-width: 900px) {
-  .listingContainer {
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr;
-  }
-} */
 
 .listingLeftContainer {
   display: flex;
@@ -173,6 +153,7 @@ td {
   padding: 1rem;
   margin: 1rem 5rem 0 0;
   width: 900px;
+  background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -224,6 +205,7 @@ td {
 }
 
 .listingTables tbody tr {
+  background-color: white;
   border-bottom: 1px solid #dddddd;
 }
 
