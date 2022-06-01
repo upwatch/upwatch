@@ -1,5 +1,9 @@
-Upwatch is a data-tracking website for the top 100 Crypto listings by market capitalization. The site was developed with Javascript, Victory Charts, Node JS, Express, PostgreSQL, Sequelize, React, Redux, and CSS.
+## About
 
-Link to deployed site: https://upwatch.herokuapp.com/
+Upwatch is a crypto tracking webite that tracks 100 crypto listings by market capitalization. Shows historical price and volume data, and a historical price chart for each listing.
 
 Market data from CoinMarketCap API & Historical daily price data from Coinbase API
+
+## Deployment Site
+
+https://upwatch.herokuapp.com/
